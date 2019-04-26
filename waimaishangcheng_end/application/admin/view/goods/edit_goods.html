@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品修改</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <script type="text/javascript" src="/static/admin/js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="/static/layui/layui.js"></script>
+</head>
+<body>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <form class="layui-form" id="e_form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品编号</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="id" value="{$list.id}">
+                    <input type="text" name="num" required  lay-verify="required" placeholder="请输入商品编号" autocomplete="off" class="layui-input" value="123456">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="goods_name" required  lay-verify="required" placeholder="请输入商品名称" autocomplete="off" class="layui-input" value="{$list.goods_name}">
+                </div>
+            </div>
+            {:widget('admin/AddGoodsSelect/show')}
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品价格</label>
+                <div class="layui-input-block">
+                    <input type="text" name="price" required  lay-verify="required" placeholder="单位：元" autocomplete="off" class="layui-input" value="{$list.price}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">数量</label>
+                <div class="layui-input-block">
+                    <input type="text" name="storage" required  lay-verify="required" placeholder="输入库存量" autocomplete="off" class="layui-input" value="{$list.storage}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品图像</label>
+                <div class="layui-input-block">
+                    <img style="width: 100px;" src="{$list.image}" alt="加载失败">
+                    <button type="button" class="layui-btn" id="edit_img">
+                        <i class="layui-icon">&#xe67c;</i>更改图片
+                    </button>
+                    <input type="hidden" name="image" value="">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>;
+</body>
+</html>
+<script>
+    //当没有上传图片时自动赋会原来的图片
+    var id = $('[name="id"]').val();
+    $.ajax({
+        type:"post",
+        url:"{:url('admin/goods/editUploadImg')}",
+        data:"id="+id,
+        dataType:"json",
+        async: false,//同步
+        success:function(res){
+            $('[name="image"]').val(res.url);
+            console.log(res.data[1]);
+            $('#category option').each(function(){
+                if(res.data[1] == $(this).val()){
+                    $(this).attr('selected','selected');
+                    return false;
+                }
+            });
+            $('#shop option').each(function(){
+                if(res.data[0] == $(this).val()){
+                    $(this).attr('selected','selected');
+                    return false;
+                }
+            });
+        }
+    });
+
+    layui.use(['form','upload'],function() {
+        var form = layui.form;
+        var upload = layui.upload;
+        form.render();
+        upload.render({
+            elem: '#edit_img',
+            url:"{:url('admin/goods/getImg')}",
+            multiple: true, //是否允许多文件上传。设置 true即可开启。不支持ie8/9
+            auto:true,//自动上传
+            before: function(obj) {
+                layer.msg('图片上传中...')
+            },
+            done: function(res) {
+                console.log(res.url);
+                $('[name="image"]').val(res.url);
+            },
+            error: function(){
+                layer.msg('上传错误！');
+            }
+        });
+    });
+</script>

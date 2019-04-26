@@ -1,0 +1,98 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:65:"E:\takeout.com\public/../application/admin\view\login\choose.html";i:1555066792;}*/ ?>
+<!doctype html>
+<html  class="x-admin-sm">
+<head>
+    <meta charset="UTF-8">
+    <title>后台登录-X-admin2.1</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/static/admin/css/font.css">
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="/static/admin/js/cookie.js"></script>
+</head>
+<body class="login-bg">
+<div class="login layui-anim layui-anim-up">
+    <div class="message">登陆选择界面</div>
+    <div id="darkbannerwrap"></div>
+    <form method="post" class="layui-form" onclick="return false;" >
+        <div style="text-align: center" id="div">
+        </div>
+    </form>
+</div>
+<!-- 底部结束 -->
+<script>
+    //百度统计可去掉
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    $.ajax({
+        type: "POST",
+        url: "<?php echo url('login/adminChoose'); ?>",
+        success: function(res){
+            console.log(res);
+            var arr = res.data;
+            var html = '';
+            if( res.code === 1 ){
+                for( var i = 1; i <= arr.length ; i++ ){
+                    if( i === 1 ){
+                        html += "<button class=\"layui-btn layui-btn-radius\" id='superAdmin'>超级管理员登陆</button>" +
+                            "<hr class=\"hr15\">";
+                    }
+                    if( i === 3 ){
+                        html += " <button class=\"layui-btn layui-btn-radius\" id='shopAdmin'>店铺管理员登陆</button>" +
+                            "<hr class=\"hr15\">";
+                    }
+                    if( i === 2 ){
+                        html += "<button class=\"layui-btn layui-btn-radius\" id='serviceAdmin'>客服人员登陆</button>" +
+                            "<hr class=\"hr20\" >";
+                    }
+                }
+                $('#div').html(html);
+            }
+        }
+    });
+    $('body').on('click','#superAdmin',function(){
+        $.ajax({
+            type: "POST",
+            url: "<?php echo url('home/isPost'); ?>",
+            data: "id=1",
+            success: function(res){
+                window.location.href="<?php echo url('home/index'); ?>";
+            }
+        });
+        //location.href="<?php echo url('home/index'); ?>?id=1";
+    });
+    $('body').on('click','#shopAdmin',function(){
+        $.ajax({
+            type: "POST",
+            url: "<?php echo url('home/isPost'); ?>",
+            data: "id=2",
+            success: function(res){
+                window.location.href="<?php echo url('home/index'); ?>";
+            }
+        });
+        //location.href="<?php echo url('home/index'); ?>?id=3";
+    });
+    $('body').on('click','#serviceAdmin',function(){
+        $.ajax({
+            type: "POST",
+            url: "<?php echo url('home/isPost'); ?>",
+            data: "id=3",
+            success: function(res){
+                window.location.href="<?php echo url('home/index'); ?>";
+            }
+        });
+        //location.href="<?php echo url('home/index'); ?>?id=2";
+    });
+</script>
+</body>
+</html>
