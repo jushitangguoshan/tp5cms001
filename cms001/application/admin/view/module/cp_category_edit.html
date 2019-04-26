@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>后台</title>
+		<link rel="stylesheet" href="/static/admin/css/dashicons.css">
+		<link rel="stylesheet" href="/static/admin/css/style.css">
+		<script src="/static/admin/js/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="wrap wrap-category-edit">
+			<h1>栏目管理</h1>
+			<div class="tips"></div>
+			<div class="box">
+				<div class="box-title">修改信息</div>	
+				<div class="box-body">
+					<form method="post" action="{:url('module/altCategory')}">
+						<table>
+							<tr><th width="80">栏目名称：</th><td>
+								<input type="text" name="category_name" value="{$category->category_name}">
+								<input type = "hidden" name = "oldId" value="{$category->id}">
+							</td></tr>
+							<tr><th>上级节点：</th><td>
+								<select name="parent_id" >
+									<option value="0">无</option>
+									{:widget('admin/category/colList')}
+								</select></tr>
+							<tr><th>显示顺序：</th><td>
+								<input type="text" class="s-num" name="sort" value="{$category->sort}">
+							</td></tr>
+							<tr class="s-act"><th></th><td><input type="submit" value="提交更改"></td></tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script>
+		    $(function(){
+				$('select').val({$pid});
+			})
+	</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!--页面内容-->
+<div class = "main">
+	<!-- 幻灯片模块 -->
+	<!-- 文章列表模块 -->
+	<div class = "main-body">
+		<div class = "main-wrap">
+			<div class = "main-left">
+				<div class = "al">
+					<div class = "al-title"><h1>{$colName}</h1></div>
+					{foreach $artArr as $lists}
+					<div class = "al-each">
+						<div class = "al-info"><a href = "{:url('module/show',['id'=>$lists.id])}">{$lists.title}</a></div>
+						<div class = "al-desc">{$lists.description}</div>
+						<div class = "al-img">
+							<a href = "{:url('module/show',['id'=>$lists.id])}">
+								<img src = "/static/admin/uploads/{$lists.thumb_url}" alt = "点击阅读文章">
+							</a>
+						</div>
+						<div class = "al-more">
+							<span>作者：{$lists.author.username} | 发表于：2016-05-31 14:50:07</span>
+							<a href = "show.php?id=2">查看原文</a>
+						</div>
+					</div>
+					{/foreach}
+					<div class = "pagelist">
+						{$artArr->render()}
+					</div>
+				</div>
+			</div>
+			<div class = "main-right">
+				<div class = "si">
+					<!-- 栏目列表 -->
+					{:widget('front/category/lists')}
+					<!-- 浏览历史 -->
+					{:widget('front/BwHistory/historyList')}
+					<!-- 最热文章 -->
+					{:widget('front/HotArticle/getHotArticle',['num'=>3])}
+					<!-- 笑话段子 -->
+					{:widget('front/Joke/lists',['page'=>1,'pagesize'=>4])}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

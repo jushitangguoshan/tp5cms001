@@ -1,0 +1,45 @@
+<!--页面内容-->
+<div class = "main">
+	<!-- 幻灯片模块 -->
+	<!-- 文章列表模块 -->
+	<div class = "main-body">
+		<div class = "main-wrap">
+			<div class = "main-left">
+				<div class = "as">
+					<div class = "as-title"><h1>{$art.title}</h1></div>
+					<div class = "as-row">
+						<span>栏目：<a href = "list.php?cid={$art.category.id}">{$art.category.category_name}</a></span>
+						<span>作者：{$art.author.username}</span>
+						<span>发表时间：{$art.create_time|strtotime|date="Y-m-d H:i:s",###}</span><span>阅读：{$art.bw_num}</span>
+					</div>
+					<div class = "as-content">
+						<p>欢迎使用 PHP内容管理系统！</p>
+						<p>{$art.artInfo.content}</p>
+					</div>
+					<div class = "as-change">
+						<span>上一篇：{eq name='$prev' value='0'}无{else/}
+							<a href = "{:url('module/show',['id'=>$prev.id])}" title = "{$prev.title}">{$prev.title}</a>
+							{/eq}
+						</span>
+						<span>下一篇：{eq name='$next' value='0'}无{else/}
+							<a href = "{:url('module/show',['id'=>$next.id])}" title = "{$next.title}">{$next.title}</a>
+							{/eq}
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class = "main-right">
+				<div class = "si">
+					<!-- 栏目列表 -->
+					{:widget('front/category/lists')}
+					<!-- 浏览历史 -->
+					{:widget('front/BwHistory/historyList')}
+					<!-- 最热文章 -->
+					{:widget('front/HotArticle/getHotArticle',['num'=>5])}
+					<!-- 笑话段子 -->
+					{:widget('front/Joke/lists',['page'=>1,'pagesize'=>4])}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

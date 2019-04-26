@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>后台</title>
+		<link rel="stylesheet" href="./css/dashicons.css">
+		<link rel="stylesheet" href="./css/style.css">
+		<script src="./js/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="wrap wrap-category">
+			<h1>栏目管理</h1>
+			<div class="tips"></div>
+			<div class="box">
+				<div class="box-body">
+					<form method="post" action="?token=d1d8da704cea56e9045df5ca761993c0">
+						<table>
+							<tr><th width="84">显示顺序</th><th>栏目名称</th><th width="120">操作</th></tr>
+							<!-- 顶级栏目 -->
+							
+							<tr class="hover">
+								<td class="center">
+									<input type="text" class="s-num" name="save[1][sort]" value="1">
+								</td>
+								<td>
+									<input type="text" name="save[1][name]" value="生活">
+								</td>
+								<td class="center">
+									<a href="cp_category_edit.php?id=1">编辑</a>
+									<a href="?a=del&id=1&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a>
+								</td>
+							</tr>
+							<!-- 子级栏目 -->
+							<tr class="hover">
+								<td class="center">
+									<input type="text" class="s-num" name="save[13][sort]" value="0">
+								</td>
+								<td>
+									<i class="icon-sub"></i>
+									<input type="text" name="save[13][name]" value="厨艺">
+								</td>
+								<td class="center">
+									<a href="cp_category_edit.html">编辑</a>
+									<a href="?a" class="jq-del">删除</a>
+								</td>
+							</tr>
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[14][sort]" value="0"></td>
+								<td><i class="icon-sub"></i><input type="text" name="save[14][name]" value="时装"></td>
+								<td class="center"><a href="cp_category_edit.html">编辑</a><a href="?a=del&id=14&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td>
+							</tr>
+							<tr><td colspan="3"><i class="icon-sub-add"></i><span class="jq-sub-add s-add" data-id="1"><i class="icon-cross"></i><b>添加子栏目</b></span></td></tr>
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[2][sort]" value="1"></td><td><input type="text" name="save[2][name]" value="资讯"></td><td class="center"><a href="cp_category_edit.php?id=2">编辑</a><a href="?a=del&id=2&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td></tr>
+							<!-- 子级栏目 -->
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[9][sort]" value="0"></td>
+								<td><i class="icon-sub"></i><input type="text" name="save[9][name]" value="新闻资讯"></td>
+								<td class="center"><a href="cp_category_edit.html">编辑</a><a href="?a=del&id=9&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td>
+							</tr>
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[10][sort]" value="0"></td>
+								<td><i class="icon-sub"></i><input type="text" name="save[10][name]" value="教育动态"></td>
+								<td class="center"><a href="cp_category_edit.html">编辑</a><a href="?a=del&id=10&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td>
+							</tr>
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[11][sort]" value="0"></td>
+								<td><i class="icon-sub"></i><input type="text" name="save[11][name]" value="学术观点"></td>
+								<td class="center"><a href="cp_category_edit.html">编辑</a><a href="?a=del&id=11&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td>
+							</tr>
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[12][sort]" value="0"></td>
+								<td><i class="icon-sub"></i><input type="text" name="save[12][name]" value="实事点评"></td>
+								<td class="center"><a href="cp_category_edit.html">编辑</a><a href="?a=del&id=12&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td>
+							</tr>
+							<tr><td colspan="3"><i class="icon-sub-add"></i><span class="jq-sub-add s-add" data-id="2"><i class="icon-cross"></i><b>添加子栏目</b></span></td></tr>
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[3][sort]" value="2"></td><td><input type="text" name="save[3][name]" value="编程"></td><td class="center"><a href="cp_category_edit.php?id=3">编辑</a><a href="?a=del&id=3&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td></tr>
+							<!-- 子级栏目 -->
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[6][sort]" value="0"></td>
+								<td><i class="icon-sub"></i><input type="text" name="save[6][name]" value="PHP"></td>
+								<td class="center"><a href="cp_category_edit.html">编辑</a><a href="?a=del&id=6&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td>
+							</tr>
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[7][sort]" value="1"></td>
+								<td><i class="icon-sub"></i><input type="text" name="save[7][name]" value="Java"></td>
+								<td class="center"><a href="cp_category_edit.html">编辑</a><a href="?a=del&id=7&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td>
+							</tr>
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[8][sort]" value="2"></td>
+								<td><i class="icon-sub"></i><input type="text" name="save[8][name]" value="Android"></td>
+								<td class="center"><a href="cp_category_edit.html">编辑</a><a href="?a=del&id=8&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td>
+							</tr>
+							<tr><td colspan="3"><i class="icon-sub-add"></i><span class="jq-sub-add s-add" data-id="3"><i class="icon-cross"></i><b>添加子栏目</b></span></td></tr>
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[4][sort]" value="3"></td><td><input type="text" name="save[4][name]" value="互联网"></td><td class="center"><a href="cp_category_edit.php?id=4">编辑</a><a href="?a=del&id=4&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td></tr>
+							<!-- 子级栏目 -->
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[16][sort]" value="0"></td>
+								<td><i class="icon-sub"></i><input type="text" name="save[16][name]" value="网络理财"></td>
+								<td class="center"><a href="cp_category_edit.html">编辑</a><a href="?a=del&id=16&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td>
+							</tr>
+							<tr><td colspan="3"><i class="icon-sub-add"></i><span class="jq-sub-add s-add" data-id="4"><i class="icon-cross"></i><b>添加子栏目</b></span></td></tr>
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[5][sort]" value="4"></td><td><input type="text" name="save[5][name]" value="科技"></td><td class="center"><a href="cp_category_edit.php?id=5">编辑</a><a href="?a=del&id=5&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td></tr>
+							<!-- 子级栏目 -->
+							<tr class="hover"><td class="center"><input type="text" class="s-num" name="save[15][sort]" value="0"></td>
+								<td><i class="icon-sub"></i><input type="text" name="save[15][name]" value="硬件"></td>
+								<td class="center"><a href="cp_category_edit.html">编辑</a><a href="?a=del&id=15&token=d1d8da704cea56e9045df5ca761993c0" class="jq-del">删除</a></td>
+							</tr>
+							<tr><td colspan="3"><i class="icon-sub-add"></i><span class="jq-sub-add s-add" data-id="5"><i class="icon-cross"></i><b>添加子栏目</b></span></td></tr>
+							<tr><td colspan="3"><span class="jq-add s-add"><i class="icon-cross"></i><b>添加新栏目</b></span></td></tr>
+							<tr class="s-act"><td colspan="3"><input type="submit" value="提交更改"></td></tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script>
+			(function () {
+				var add_id = 0; //保存ID计数
+				//添加新栏目
+				$(".jq-add").click(function () {
+					$(this).parents("tr").before('<tr class="hover"><td class="center">\
+<input type="text" class="s-num" name="add[' + add_id + '][sort]"></td><td colspan="2">\
+<input type="text" name="add[' + add_id + '][name]">\
+<input type="hidden" name="add[' + add_id + '][pid]" value="0">\
+		<b class="jq-cancel">取消</b></td></tr>');
+					++add_id;
+				});
+				//添加子栏目
+				$(".jq-sub-add").click(function () {
+					var id = $(this).attr("data-id");
+					$(this).parents("tr").before('<tr class="hover"><td class="center">\
+<input type="text" class="s-num" name="add[' + add_id + '][sort]"></td><td colspan="2">\
+<i class="icon-sub"></i><input type="text" name="add[' + add_id + '][name]">\
+<input type="hidden" name="add[' + add_id + '][pid]" value="' + id + '">\
+		<b class="jq-cancel">取消</b></td></tr>');
+					++add_id;
+				});
+				//取消添加
+				$(document).on("click", ".jq-cancel", function () {
+					$(this).parents("tr").remove();
+				});
+				//删除前提示
+				$(".jq-del").click(function () {
+					return confirm("您确定要删除此栏目？");
+				});
+			})();
+		</script>
+	</body>
+</html>

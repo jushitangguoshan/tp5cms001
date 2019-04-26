@@ -1,0 +1,23 @@
+1、使用curl工具请求聚合《笑话大全》数据到cms项目上。右侧一小物件形式实现
+
+2、看thinkphp手册 【验证】-> 【表单令牌】 给cms项目上出现的表单提交添加表单令牌
+
+3、借助框架路由、多级控制器实现
+- 使用postman工具测试接口
+- 返回的信息以json格式返回
+
+请求地址：http://www.study.com/v1/article   GET  获取所有文章的信息(标题)
+可加参数：
+page 页码  
+pagesize 一页显示多少 
+
+请求地址：http://www.study.com/v1/article/1  GET   获取id为1的文章信息(标题、正文)
+请求地址：http://www.study.com/v1/article    POST  [title=>'测试的文章标题',category_id=>18,keyword=>'php,liunx']  添加一篇文章
+
+
+【学习阅读】
+http://www.ruanyifeng.com/blog/2014/05/restful_api.html
+http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html
+
+【curl有问题】
+https://segmentfault

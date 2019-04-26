@@ -1,0 +1,47 @@
+专业术语：tdk
+<meta name="keywords" content="聂哥 jack PHP Linux Nginx,聂哥的博客">
+<meta name="description" content="聂哥的一个简单的用来学习，用来记忆的博客">
+<title>聂哥的博客</title>
+
+
+## 3月6号
+文章管理  尽量全部使用模型来整
+
+
+#文章主表：
+id    int auto 无符号
+标题  varchar 50  
+作者  user_id   smallint      外键
+栏目  category_id  smallint    外键
+描述  varchar(200)
+封面图片   varchar(200)
+状态 0/1  tinyint
+
+枚举 
+if($status == '0'){
+
+	
+}
+
+
+# 文章副表
+aid  int
+content    text
+
+
+# 用户表
+id      smallint     主键
+用户名
+
+# 关键字表
+id int
+keyword
+
+# 文章和关键字关系表
+
+
+# 栏目表
+id  smallint
+category_name varchar(100)
+
+
