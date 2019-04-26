@@ -1,0 +1,60 @@
+<div id="loginform" class="loginform n">
+    <div>
+        <div class="loginformfield">
+            <span class="form-icon"><img src="/static/front/image/logo-50-50.jpg.png"></span>
+        </div>
+        <div class="loginformfield">
+            <span class="form-title">
+                <h2>使用手机号登录订饭组</h2>
+            </span>
+        </div>
+        <div class="loginformfield">
+            <label class="field-name">手机号:</label>
+            <input id="phone-1" placeholder="请输入您的手机号" name="phone">
+            <div class="loginformfield-hint form-error">
+                <span id="login-phone-error"></span>
+            </div>
+        </div>
+        <div class="loginformfield">
+            <label class="field-name">密码:</label>
+            <span class="fp">
+                <a href="#" id="forget-password" class="forget-password">忘记密码？</a>
+            </span>
+            <input id="login-pwd" type="password" placeholder="密码" name="pwd">
+            <div class="loginformfield-hint form-error">
+                <span id="login-pwd-error"></span>
+            </div>
+        </div>
+    </div>
+    <div class="loginform-buttons">
+        <a id="checkin" class="save-btn" href="#">登录</a>
+        <span >还没有账号？<a id="register">创建一个</a></span>
+    </div>
+</div>
+<script>
+    $('#checkin').click(function(){
+        var phone = $('[name="phone"]').val();
+        var pwd = $('[name="pwd"]').val();
+        $.ajax({
+            type:"post",
+            url:'http://www.takeout.com/v1/login',
+            data:{
+                phone:phone,
+                pwd:pwd
+            },
+            dataType:"json",
+            success:function(res){
+                if(res.errcode === 0){
+                    $('#header-login').hide();
+                    $('#user').css('display','block');
+                    $('#myModal').css('visibility','hidden');
+                    $('.reveal-modal-bg').css('display','none');
+                    //写cookie并放在根目录
+                    $.cookie('userId',res.data,{path:'/'});
+                }else{
+                    alert(res.msg);
+                }
+            }
+        });
+    });
+</script>

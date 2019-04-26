@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <script type="text/javascript" src="/static/admin/js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="/static/layui/layui.js"></script>
+    <title>添加商品</title>
+</head>
+<body>
+<div class="layui-card">
+    <div class="layui-card-header">添加商品</div>
+    <div class="layui-card-body">
+        <form class="layui-form" id="form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="goods_name" required  lay-verify="required" placeholder="请输入商品名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            {if condition="($Request.session.adminId == 4)"}
+                {:widget('admin/AddGoodsSelect/show')}
+                {:widget('admin/CategorySelect/show')}
+            {else /}
+            <div class="layui-form-item">
+                <label class="layui-form-label">所属店铺</label>
+                <div class="layui-input-block">
+                    <select name="belong_store_id" lay-verify="required" id="shop">
+                        <option value="{$list.id}">{$list.name}</option>
+                    </select>
+                </div>
+            </div>
+            {:widget('admin/CategorySelect/show')}
+            {/if}
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品价格</label>
+                <div class="layui-input-block">
+                    <input type="text" name="price" required  lay-verify="required" placeholder="输入单价（单位：元）" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">数量</label>
+                <div class="layui-input-block">
+                    <input type="text" name="storage" required  lay-verify="required" placeholder="输入库存量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品图像</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn" id="good_img">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                    <input type="hidden" name="image" value="">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    layui.use(['form','upload'], function(){
+        var form = layui.form;
+        var upload = layui.upload;
+        //渲染下拉框
+        form.render();
+        upload.render({ //上传图片
+            elem: '#good_img',
+            url:"{:url('admin/goods/getImg')}",
+            multiple: true, //是否允许多文件上传。设置 true即可开启。不支持ie8/9
+            auto:true,//自动上传
+            before: function(obj) {
+                layer.msg('图片上传中,请等候片刻')
+            },
+            done: function(res) {
+                console.log(res.url);
+                $('[name="image"]').val(res.url);
+            },
+            error: function(){
+                layer.msg('上传错误！');
+            }
+        });
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            $.ajax({
+                type:"post",
+                url:"{:url('admin/goods/add')}",
+                data:$('#form').serialize(),
+                dataType:'json',
+                async: false,//同步
+                success:function(res){
+                    if(res.code === 0){
+                        layer.msg(res.msg , {icon: 6});
+                    }else{
+                        layer.msg(res.msg , {icon: 5});
+                    }
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

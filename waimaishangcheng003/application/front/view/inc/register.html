@@ -1,0 +1,54 @@
+<form id="form">
+<div id="registerform" class="registerform n">
+    <div>
+        <div class="loginformfield">
+            <span class="form-icon"><img src="/static/front/image/logo-50-50.jpg.png"></span>
+        </div>
+        <div class="loginformfield">
+            <span class="form-title">
+                <h2>创建新账号</h2>
+            </span>
+        </div>
+        <div class="loginformfield">
+            <label class="field-name">手机号:</label>
+            <input id="phone-2" placeholder="请输入您的手机号" name="phone">
+            <div class="loginformfield-hint form-error">
+                <span id="register-phone-error"></span>
+            </div>
+        </div>
+        <div class="loginformfield field-confirm-code">
+            <label class="field-name">验证码:</label>
+            <input   id="register-confirm-code" placeholder="请输入验证码">
+            <button id="register-code" class="phone-code-btn">获取验证码</button>
+            <input type="hidden" id="register-hid-code">
+            <div class="loginformfield-code-hint form-error">
+                <span id="register-code-error"></span>
+            </div>
+        </div>
+        <div class="loginformfield">
+            <label class="field-name">请输入密码:</label>
+            <input id="register-pwd" type="password" placeholder="请输入6位以上字母或数字密码" name="pwd">
+            <div class="loginformfield-hint form-error">
+                <span id="register-pwd-error"></span>
+            </div>
+        </div>
+    </div>
+    <div class="loginform-buttons">
+        <a id="create" class="save-btn" href="#">创建</a>
+        <span >已经有账号？<a id="login">登录</a></span>
+    </div>
+</div>
+</form>
+<script>
+    $('#create').click(function(){
+        $.ajax({
+            type:"post",
+            url:"http://www.takeout.com/v1/register",
+            data:$('#form').serialize(),
+            dataType:"json",
+            success:function(res){
+                alert(res.msg);
+            }
+        });
+    })
+</script>

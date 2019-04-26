@@ -1,0 +1,97 @@
+<html class="x-admin-sm">
+    <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.1</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <script type="text/javascript" src="/static/layui/layui.js" charset="utf-8"></script>
+    </head>
+<body>
+    <div class="x-body">
+        <form class="layui-form" action="" lay-filter="example" >
+            <div class="layui-form-item">
+                <label class="layui-form-label">栏目名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="category_name"  value={$data.category_name} class="layui-input" lay-verify="required|category_name">
+                    <input type="hidden" name="id" value={$data.id}>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">顺序</label>
+                <div class="layui-input-block">
+                    <input type="text" name="weight"    value={$data.weight} class="layui-input" lay-verify="required|number|weight">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">栏目状态</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="status" lay-skin="switch" {if condition="$data['status'] == 1"} checked {/if}  lay-text="开启|停用" >
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="editForm" onclick="">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    layui.use(['form'], function(){
+        var form = layui.form,
+            layer = layui.layer,
+            $ = layui.jquery;
+        //自定义验证规则
+        form.verify({
+            category_name: function(value){
+                if( !/^[a-zA-Z\/]*$|^[\u4E00-\u9FA5]*$/.test(value) ){
+                    return '栏目名称不能有特殊字符';
+                }
+                if( /^\d+\d+\d$/.test(value) ){
+                    return '栏目名称不能全为数字';
+                }
+                if( value.length>10){
+                    return '栏目名称超出最大长度';
+                }
+            }
+            ,weight: function (value) {
+                if(value>1000 || value<1){
+                    return '权重必须为1000以内的正整数且大于0';
+                }
+            }
+        });
+        //监听提交
+       form.on('submit(editForm)', function(){
+            var formdata = new FormData($("form")[0]);
+            $.ajax({
+                url: "{:url('admin/categorys/categoryEditHandle')}",
+                method: 'post',
+                data: formdata,
+                dataType: 'JSON',
+                processData: false,
+                contentType: false,
+                async:false,
+                success: function (res) {
+                    console.log(res);
+                    if( res.code === 100 ){
+                        layer.confirm(res.msg, {
+                            btn: ['继续修改','关闭']
+                        }, function(){
+                            layer.closeAll();
+                        }, function(){
+                            parent.location.reload(); // 父页面刷新
+                            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                            parent.layer.close(index);
+                        });
+                    }
+                },
+                error: function () {
+                    parent.layer.msg("操作失败", {icon: 5});
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</html>

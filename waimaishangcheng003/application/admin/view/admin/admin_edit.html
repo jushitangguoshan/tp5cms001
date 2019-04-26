@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.1</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+      <link rel="stylesheet" href="/static/admin/css/font.css">
+      <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+      <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+      <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+      <script type="text/javascript" src="/static/admin/js/cookie.js"></script>
+  </head>
+  <body>
+    <div class="x-body">
+        <form class="layui-form" id="edit_form"  lay-filter="example">
+          <div class="layui-form-item">
+              <input type="hidden" name="id" value="{$data.id}">
+              <input type="hidden" name="update_time" value="{$data.update_time}">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>姓名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="name" name="name" value="{$data.name}"
+                         required="" lay-verify="required"  autocomplete="off"  class="layui-input">
+
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>将会成为您唯一的登入名
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>手机
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text"  id="phone" name="phone" value="{$data.phone}"
+                         required="" lay-verify="phone"  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>将会成为您唯一的联系方式
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>邮箱
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text"  id="email" name="email" value="{$data.email}"
+                         required="" lay-verify="email"  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>将会成为联系您唯一的邮箱
+              </div>
+          </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">选择操作权限</label>
+                <div class="layui-input-block" id="role">
+                    <input type="checkbox" name="role[1]"  {in name='1' value="$data.role"}checked{/in} title="超级管理员">
+                    <div class="layui-unselect layui-form-checkbox">
+                        <span>超级管理员</span>
+                        <i class="layui-icon layui-icon-ok"></i>
+                    </div>
+                    <input type="checkbox" name="role[2]"   {in name='2' value="$data.role"}checked{/in}  title="店铺管理员">
+                    <div class="layui-unselect layui-form-checkbox">
+                        <span>客服</span>
+                        <i class="layui-icon layui-icon-ok"></i>
+                    </div>
+                    <input type="checkbox" name="role[3]"  {in name='3' value="$data.role"}checked{/in} title="客服">
+                    <div class="layui-unselect layui-form-checkbox">
+                        <span>店铺管理员</span>
+                        <i class="layui-icon layui-icon-ok"></i>
+                    </div>
+                </div>
+             </div>
+      </form>
+    </div>
+  </body>
+</html>
