@@ -1,0 +1,34 @@
+array (
+  'ToUserName' => 'gh_1fad9142bc41',
+  'FromUserName' => 'o-MnH1J7vt94WhpuEPf6z3u5YcOs',
+  'CreateTime' => '1552654143',
+  'MsgType' => 'text',
+  'Content' => 'hello',
+  'MsgId' => '22228659341146416',
+)
+
+
+
+array (
+  'ToUserName' => 'gh_1fad9142bc41',
+  'FromUserName' => 'o-MnH1J7vt94WhpuEPf6z3u5YcOs',
+  'CreateTime' => '1552654564',
+  'MsgType' => 'image',
+  'PicUrl' => 'http://mmbiz.qpic.cn/mmbiz_jpg/vgcmic0tehC8K5hQQuT8UsDZlicgTdFCOsmIozKVl93yWibqZk9Mp8Msx5fiaetNTbco9EaPHSGjtul0wjHtEwu41g/0',
+  'MsgId' => '22228668979960237',
+  'MediaId' => 'Wg3S_BMhfN7hwpp3C9-UqwlNw6lqvdKr3jxi9RoTMUtbazP6BrKaA4M9gchqb5-p',
+)
+
+
+
+
+
+array (
+  'ToUserName' => 'gh_1fad9142bc41',
+  'FromUserName' => 'o-MnH1J7vt94WhpuEPf6z3u5YcOs',
+  'CreateTime' => '1552656229',
+  'MsgType' => 'video',
+  'MediaId' => 'GhVadiIHw0KUSoTNoTj6NvJz-auGg5m4psxhRsrUglC9acWsNFeElwTwR2sA0idh',
+  'ThumbMediaId' => 'PPAOBK0cGCUDIudUIimnBFNq6l8tGfY2PJ1j9cm1ARotK6SZd6DEyhi8Qzew562p',
+  'MsgId' => '22228691582143722',
+)

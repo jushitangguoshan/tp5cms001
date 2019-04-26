@@ -1,0 +1,7 @@
+<!--index.wxml  -->
+<input placeholder="请输入数字a" bindinput="inputa" />
+<text>+</text>
+<input placeholder="请输入数字b" bindinput="inputb" />
+<button bindtap='sum'>计算</button>
+<navigator url = "/pages/cntime/index" open-type = "redirect">时间</navigator>
+

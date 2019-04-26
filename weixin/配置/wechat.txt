@@ -1,0 +1,12 @@
+》》开发基本配置
+------url:https://www.anniluohaixing.xyz/wechat
+	Token : jstgs
+	EncodingAESKey : VdIEgITzXE9ye4poaqFLVYB5CBCNiEZ6tpS3RgLWMId
+
+
+
+
+
+	小程序
+		AppID(小程序ID) wx9d25bb982327bde5
+	  AppSecret(小程序密钥) b0ffa3add1b8d6108854f6e7be2a84e2

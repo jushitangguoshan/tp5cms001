@@ -1,0 +1,40 @@
+<?php defined('IN_IA') or exit('Access Denied');?><?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/header', TEMPLATE_INCLUDEPATH)) : (include template('common/header', TEMPLATE_INCLUDEPATH));?>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="javascript:void(0);">基本信息</a></li>
+</ul>
+
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">使用说明</div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item text-danger">1. 本应用为免费尝鲜版，生成环境，请慎重使用！！</li>
+                <li class="list-group-item">2. 使用前必须配置系统参数里的 【应用名】</li>
+                <li class="list-group-item">3. 大致流程：任意用户可以玩2关的试玩版，如果要想玩3关的正式版，【设置】需要关注公众号。会有相应的逻辑跳转到关注页。</li>
+                <li class="list-group-item">4. 使用引导关注，判断是否关注公众号，需要<strong class="text-danger">【微信认证服务号】</strong>，不然无法通过关注判断。如果不需要引导关注，可以设置直接进入正式游戏。</li>
+                <li class="list-group-item">5. <strong class="text-danger">【微信认证订阅号】</strong>或 <strong class="text-danger">【微信认证订阅号】</strong>可以配置自定义微信分享内容。</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <?php  if(empty($set['name']) || ($set['need_follow'] == 1 && empty($set['qrcode']))) { ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">需要配置项</div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <?php  if(empty($set['name'])) { ?>
+                <li class="list-group-item text-warning">【应用名】 为空</li>
+                <?php  } ?>
+                <?php  if($set['need_follow'] == 1 && empty($set['qrcode'])) { ?>
+                <li class="list-group-item text-warning">【公众号二维码】 设置为空.</li>
+                <?php  } ?>
+            </ul>
+        </div>
+    </div>
+    <?php  } ?>
+</div>
+
+<?php (!empty($this) && $this instanceof WeModuleSite || 1) ? (include $this->template('common/footer', TEMPLATE_INCLUDEPATH)) : (include template('common/footer', TEMPLATE_INCLUDEPATH));?>

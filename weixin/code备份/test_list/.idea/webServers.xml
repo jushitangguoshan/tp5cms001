@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f9cb3ae4-a948-48b0-b4e4-b92933c81149" name="myweb" url="http://anniluohaixing.ftp-gz01.bcehost.com">
+        <fileTransfer host="anniluohaixing.ftp-gz01.bcehost.com" port="8010" rootFolder="/webroot">
+          <advancedOptions>
+            <advancedOptions compatibilityMode="true" dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="8010" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
